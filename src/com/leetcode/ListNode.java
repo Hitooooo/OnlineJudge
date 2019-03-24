@@ -1,3 +1,5 @@
+package com.leetcode;
+
 /**
  * @author HitoM
  * @date 2019/3/5 20:52
