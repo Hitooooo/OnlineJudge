@@ -13,6 +13,6 @@ public class Main {
         int[] c = {8, -19, 5, -4, 20};
         int[] d = {-1, 0, -2};
         int[] e = {-1};
-        System.out.println(MaximumSubarray.solution(e));
+        System.out.println(MaximumSubarray.solution2(c));
     }
 }
