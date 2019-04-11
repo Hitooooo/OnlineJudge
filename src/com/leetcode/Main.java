@@ -1,12 +1,16 @@
 package com.leetcode;
 
 
+import java.util.HashSet;
+
 /**
  * @author Mht
  */
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println(0^1285);
+        HashSet<Integer> integers = new HashSet<>();
+        System.out.println(integers.add(null));
+        System.out.println(integers.add(null));
     }
 }
