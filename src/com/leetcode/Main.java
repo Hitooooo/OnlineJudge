@@ -1,14 +1,22 @@
 package com.leetcode;
 
 
+import com.leetcode.struct.TreeNode;
+import com.leetcode.top100.ConvertBST;
+
 /**
  * @author Mht
  */
 public class Main {
 
     public static void main(String[] args) {
-        System.out.printf(new FindAnagrams().findAnagrams2("cbaebabacd", "abc").toString());
-        int[] arr = new int[]{4, 3, 2, 7, 8, 2, 3, 1};
-        new FindNumbersDisappeared().findDisappearedNumbers(arr);
+        TreeNode root = new TreeNode(5);
+        TreeNode left = new TreeNode(2);
+        TreeNode right = new TreeNode(13);
+
+        root.left = left;
+        root.right = right;
+        ConvertBST convertBST = new ConvertBST();
+        System.out.println(convertBST.sum(root));
     }
 }
