@@ -3,6 +3,10 @@ package com.leetcode;
 
 import com.leetcode.struct.TreeNode;
 import com.leetcode.top100.ConvertBST;
+import com.leetcode.top100.FindUnsortedSubarray;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author Mht
@@ -10,13 +14,7 @@ import com.leetcode.top100.ConvertBST;
 public class Main {
 
     public static void main(String[] args) {
-        TreeNode root = new TreeNode(5);
-        TreeNode left = new TreeNode(2);
-        TreeNode right = new TreeNode(13);
-
-        root.left = left;
-        root.right = right;
-        ConvertBST convertBST = new ConvertBST();
-        System.out.println(convertBST.sum(root));
+        int[] arr = {2, 6, 4, 8, 10, 9, 15};
+        System.out.println(new FindUnsortedSubarray().findUnsortedSubarray(arr));
     }
 }
