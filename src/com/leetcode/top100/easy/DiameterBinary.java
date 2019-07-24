@@ -1,4 +1,4 @@
-package com.leetcode.top100;
+package com.leetcode.top100.easy;
 
 import com.leetcode.struct.TreeNode;
 

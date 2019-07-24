@@ -1,4 +1,4 @@
-package com.leetcode.top100;
+package com.leetcode.top100.easy;
 
 /**
  * The Hamming distance between two integers is the number

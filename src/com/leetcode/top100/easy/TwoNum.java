@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.leetcode.top100.easy;
 
 /**
  * Given an array of integers,return indices of the two numbers such that
