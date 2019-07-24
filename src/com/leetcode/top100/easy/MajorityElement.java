@@ -1,8 +1,6 @@
-package com.leetcode;
+package com.leetcode.top100.easy;
 
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * Given an array of size n, find the majority element.

@@ -1,8 +1,6 @@
-package com.leetcode.top100;
+package com.leetcode.top100.easy;
 
 import com.leetcode.struct.TreeNode;
-
-import java.util.LinkedList;
 
 /**
  * Given a Binary Search Tree (BST),
