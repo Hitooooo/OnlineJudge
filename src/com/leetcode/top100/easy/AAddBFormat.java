@@ -1,9 +1,9 @@
-package com.leetcode;
+package com.leetcode.top100.easy;
 
 /**
- * Calculate a+b and output the sum in standard format -- that is,
- * the digits must be separated into groups of three by
- * commas (unless there are less than four digits).
+ * Calculate a+b and output the sum in standard format -- that is, the digits
+ * must be separated into groups of three by commas (unless there are less than
+ * four digits).
  *
  * @author HitoM
  * @date 2019/3/5 20:55

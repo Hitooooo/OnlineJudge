@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.leetcode.top100.easy;
 
 /**
  * Given an array nums, write a function to move all 0's
