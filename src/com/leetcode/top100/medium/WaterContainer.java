@@ -1,11 +1,6 @@
 package com.leetcode.top100.medium;
 
-import static org.junit.Assert.assertThat;
-
 import org.junit.Test;
-
-import junit.framework.Assert;
-
 /**
  * Given n non-negative integers a1, a2, ..., an , where each represents a point
  * at coordinate (i, ai). n vertical lines are drawn such that the two endpoints
