@@ -3,7 +3,6 @@ package com.leetcode.top100.medium;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
