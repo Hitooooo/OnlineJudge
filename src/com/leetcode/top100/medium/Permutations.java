@@ -16,9 +16,35 @@ import org.junit.Test;
  * @date 2019/09/03
  */
 public class Permutations {
+    /**
+     * 回溯法了解一下？
+     */
+    public List<List<Integer>> permute2(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+        backtrace(result, temp, nums);
+        return result;
+    }
+
+    private void backtrace(List<List<Integer>> result, List<Integer> temp, int[] nums) {
+        if (temp.size() == nums.length) {
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (temp.contains(nums[i])) {
+                continue;
+            }
+            // 传到下一层的nums应该是减去当前已经add过的了，但是可以通过判断是否包含的方式，巧妙的将其过滤
+            temp.add(nums[i]);
+            backtrace(result, temp, nums);
+            temp.remove(temp.size() - 1);
+        }
+    }
 
     /**
      * Runtime: 38 ms, faster than 5.01% of Java online submissions 😂
+     * 
      * @param nums
      * @return
      */
@@ -49,6 +75,12 @@ public class Permutations {
     @Test
     public void test() {
         List<List<Integer>> result = permute(new int[] { 1, 2, 3 });
+        System.out.println(result);
+    }
+
+    @Test
+    public void test2() {
+        List<List<Integer>> result = permute2(new int[] { 1, 2, 3 });
         System.out.println(result);
     }
 }
