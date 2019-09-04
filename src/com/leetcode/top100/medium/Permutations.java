@@ -1,12 +1,10 @@
 package com.leetcode.top100.medium;
 
+import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import org.junit.Test;
 
 /**
  * Given a collection of distinct integers, return all possible permutations.
@@ -46,7 +44,6 @@ public class Permutations {
      * Runtime: 38 ms, faster than 5.01% of Java online submissions 😂
      * 
      * @param nums
-     * @return
      */
     public List<List<Integer>> permute(int[] nums) {
         List<Integer> list = Arrays.stream(nums).boxed().collect(Collectors.toList());
