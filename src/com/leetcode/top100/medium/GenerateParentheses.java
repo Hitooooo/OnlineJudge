@@ -3,8 +3,6 @@ package com.leetcode.top100.medium;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
-
 import org.junit.Test;
 
 /**
