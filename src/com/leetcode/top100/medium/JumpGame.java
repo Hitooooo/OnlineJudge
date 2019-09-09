@@ -57,7 +57,7 @@ public class JumpGame {
     }
 
     /**
-     * 回溯法。尝试在每个位置上下一步的可能走法. 超时
+     * 回溯法。尝试在每个位置上下一步的可能走法. 超时 
      */
     public boolean canJump2(int[] nums) {
         return canJumpBacktrace(nums, 0);
