@@ -1,6 +1,7 @@
 package com.leetcode.top100.medium;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,10 +23,20 @@ public class BTLLevelOrderTravelsal{
         queue.offer(root);
         while(!queue.isEmpty()){
             List<Integer> temp = new ArrayList<Integer>();
+            List<TreeNode> levelNodes = new ArrayList<>(queue);
             for (TreeNode node : queue) {
                 temp.add(node.val);
             }
-            temp.clear();
+            result.add(temp);
+            queue.clear();
+            for (TreeNode levelNode : levelNodes) {
+                if(levelNode.left != null){
+                    queue.offer(levelNode.left);
+                }
+                if(levelNode.right != null){
+                    queue.offer(levelNode.right);
+                }
+            }
         }
         return result;
     }
