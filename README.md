@@ -5,7 +5,7 @@
 ### Review
 
 * 96 [不同的二叉搜索树](https://leetcode-cn.com/problems/unique-binary-search-trees/)
-* 
+* 139 [单词拆分](https://leetcode-cn.com/problems/word-break/submissions/)
 
 ### It's ok
 
@@ -14,6 +14,8 @@
 ## Category
 
 ### DP
+
+* 139 [单词拆分](https://leetcode-cn.com/problems/word-break/submissions/)
 
 ### Backtrack
 
