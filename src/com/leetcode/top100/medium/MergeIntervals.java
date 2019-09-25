@@ -75,5 +75,6 @@ public class MergeIntervals {
         int[][] intervals2 = new int[][]{{1, 4}, {4, 5}};
         int[][] result2 = merge(intervals2);
         System.out.println(result2.length);
+        System.out.println(result.length);
     }
 }

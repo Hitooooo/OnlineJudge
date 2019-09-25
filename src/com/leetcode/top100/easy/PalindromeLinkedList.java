@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 /**
  * Given a singly linked list, determine if it is a palindrome.
- * TODO:你能优化吗？
+ * 你能优化吗？ 我不能
  * @author HitoM
  * @date 2019/4/12 18:18
  **/
