@@ -1,7 +1,6 @@
 package com.leetcode;
 
-import com.leetcode.top100.medium.LongestPalindrome;
-import com.leetcode.top100.medium.ThreeSum;
+import com.leetcode.top100.medium.LRUByDoubleList;
 
 /**
  * @author Mht
@@ -9,8 +8,15 @@ import com.leetcode.top100.medium.ThreeSum;
 public class Main {
 
     public static void main(String[] args) {
-                
-        System.out.println(new LongestPalindrome().longestDynamic("abba"));
-        System.out.println(new ThreeSum().threeSum(new int[]{-2,0,1,1,2}));
+        LRUByDoubleList list = new LRUByDoubleList(2);
+        list.put(1, 1);
+        list.put(2, 2);
+        int n1 = list.get(1);
+        list.put(3, 3);
+        int n2 = list.get(2);
+        list.put(4, 4);
+        int n3 = list.get(1);
+        int n4 = list.get(3);
+        int n5 = list.get(4);
     }
 }
