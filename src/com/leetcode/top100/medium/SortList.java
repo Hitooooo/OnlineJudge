@@ -19,8 +19,10 @@ public class SortList {
         if (head == null || head.next == null) {
             return head;
         }
+        // 快慢指针寻找中点，快指针走到底的时候，慢指针正好处在中点上
         ListNode fast = head;
         ListNode slow = head;
+        // mid指向left的最后一个结点
         ListNode mid = head;
         while (fast != null && fast.next != null) {
             fast = fast.next.next;
@@ -47,21 +49,18 @@ public class SortList {
             }
             head = head.next;
         }
-        if (node1 == null) {
-            head.next = node2;
-        } else {
-            head.next = node1;
-        }
+    
+        head.next = node1 == null ? node2 : node1;
         return headP.next;
     }
 
     @Test
-    public void test(){
+    public void test() {
         ListNode head = new ListNode(-1);
-        ListNode head4 =new ListNode(4);
-        ListNode head2 =new ListNode(2);
-        ListNode head1 =new ListNode(1);
-        ListNode head3 =new ListNode(3);
+        ListNode head4 = new ListNode(4);
+        ListNode head2 = new ListNode(2);
+        ListNode head1 = new ListNode(1);
+        ListNode head3 = new ListNode(3);
         head.next = head4;
         head4.next = head2;
         head2.next = head1;
