@@ -22,5 +22,6 @@
 * 309 [股票问题](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
 * 322 [零钱兑换](https://leetcode-cn.com/problems/coin-change/)
 * 152 :two_hearts:[最大乘积子序列](https://leetcode-cn.com/problems/maximum-product-subarray/): 注意全部最大和局部最大，为什么dp[i] = max(dp[i-1]*nums[i], num[i])可以处理不连续的情况？
+* 337 [打家劫舍3](https://leetcode-cn.com/problems/house-robber-iii/)
 ### Backtrack
 
