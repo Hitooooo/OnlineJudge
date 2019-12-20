@@ -9,6 +9,7 @@
 * 208 [实现 Trie (前缀树)](https://leetcode-cn.com/problems/implement-trie-prefix-tree/)
 * 221 [最大正方形](https://leetcode-cn.com/problems/maximal-square)
 * 309 [股票问题](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/): 总结一系列的股票问题.
+* 416 [分割等和子集](https://leetcode-cn.com/problems/partition-equal-subset-sum):回溯需要剪枝
 
 ### It's ok
 
