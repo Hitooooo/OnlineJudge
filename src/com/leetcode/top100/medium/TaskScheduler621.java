@@ -16,25 +16,53 @@ import org.junit.Test;
 public class TaskScheduler621 {
 
     /**
-     * 确定次数最多的任务，然后将后面的任务插入到最多次任务中间。
-     * 设定一轮可执行任务个数为 n+1，一个任务执行后接着运行不同的任务，这一轮中绝不会出现待命的状态。如果每一轮中都没有待命状态，
-     * 那么运行时间一定是最小的。但是如果任务种类不够n+1怎么办？选择全部的t种放进去，剩下的空闲
-     * 1.排序
-     * 2. 
+     * 优先出现次数最多的任务，其后将剩下的插入到最多的间隔之中。如果，补不齐，那么就空闲。
+     * 如n=2, A3 B2 C1: ABC AB# A## time = 3 + 3 + 1 = 7（最后一个，因为后面没有可插入的了，只占用一个单位时间）
+     * 如何证明这样是最小的呢
      */
     public int leastInterval(char[] tasks, int n) {
+        return 0;
+    }
+
+    /**
+     * 排序后通过切的方式是不行的，因为要求冷却时间内无法执行相同的任务。
+     */
+    public int leastIntervalWrong(char[] tasks, int n) {
         int[] map = new int[26];
-        for (char c: tasks)
+        for (char c : tasks)
             map[c - 'A']++;
         Arrays.sort(map);
-        int time = 0;
-        while (map[25] > 0) {
-
+        int i = -1;
+        for (int j = 0; j < map.length; j++) {
+            if(map[j] > 0){
+                i = j;
+                break;
+            }
         }
-        return time; } 
+        return i == -1 ? 0 :helper(map, i, n);
+    }
+
+    private int helper(int[] counts, int i, int cd){
+        if(i < 0 || i > counts.length - 1){
+            return 0;
+        }
+        if(i == counts.length-1){
+            return counts[i] * (cd + 1); 
+        }
+        int time = 0;
+        for (int j = i; j < counts.length; j++) {
+           time++;
+           counts[j]--; 
+           if(counts[j] == 0){
+               i++;
+           }
+        }
+        return time + helper(counts,  i, cd);
+    }
+
     @Test
-    public void test(){
-        char[] tasks = {'A','A','A','B','B','B'};
+    public void test() {
+        char[] tasks = { 'A', 'A', 'A', 'B', 'B', 'B' };
         int time = leastInterval(tasks, 2);
         System.out.println(time);
     }
