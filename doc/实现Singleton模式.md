@@ -33,7 +33,7 @@ public class Singleton {
 ### 代码块中加锁的方式
 
 ```java
-// 实例添加volatile，禁止虚拟机重排初始化过程。
+// 实例添加volatile，禁止虚拟机重排初始化过程，防止其他线程获取到未初始化完全的实例
 private static volatile Singleton instance;
 
 public static Singleton getInstance2(){
@@ -51,7 +51,24 @@ public static Singleton getInstance2(){
 
 * 只有实例为空才加锁
 * 如果其他线程先获取了锁已经执行了实例化，需要在获取锁后再判断一次
-* 
+* **注意对成员变量Instance添加 volatile 关键字** 
+
 ### 静态构造函数
 
 以上方法，虽然实现了，并且效率较高，但是实现复杂，易出错。
+
+```java
+    private static class SingletonHolder {
+        private static final Singleton INSTANCE = new Singleton();
+    }
+
+    public static Singleton getInstance3() {
+        return SingletonHolder.INSTANCE;
+    }
+```
+
+通过静态内部类的方式，保证类只会被初始化一次。之后的每次获取都是同一个对象。简单直白。
+
+### Spring是如何实现单例模式的？
+
+单例注册表。[底层分析参考](https://www.cnblogs.com/aaron911/p/11074303.html)
