@@ -27,6 +27,10 @@
 
 ### Backtrack
 
+### BinarySearch
+
+
+
 ## Other
 
 ### [单例模式](doc/实现Singleton模式.md)

@@ -1,5 +1,7 @@
 package com.leetcode.binary;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 /**
@@ -44,6 +46,8 @@ public class Search2DMatrix {
     @Test
     public void test(){
         int[][] arr = {{1,3,5,7},{10,11,16,20},{23,30,34,50}};
+        int[][] arr2 ={{1,2,8,9},{2,4,9,12},{4,7,10,13},{6,8,11,15}};
+        assertEquals(searchMatrix(arr2, 7), false);
         boolean r = searchMatrix(arr, 55);
         System.err.println(r);
     }
