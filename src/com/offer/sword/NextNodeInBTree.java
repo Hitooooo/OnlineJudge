@@ -1,10 +1,7 @@
 package com.offer.sword;
 
 import com.leetcode.struct.TreeLinkNode;
-
 import org.junit.Test;
-
-import sun.net.www.content.image.png;
 
 /**
  * 给定一个二叉树和二叉树中的某个节点，找到其按中序或者前序遍历的后一个节点
