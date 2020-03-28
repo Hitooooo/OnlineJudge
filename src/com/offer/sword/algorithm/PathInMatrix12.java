@@ -1,21 +1,25 @@
 package com.offer.sword.algorithm;
 
-import java.util.Arrays;
-
 import org.junit.Test;
 
 /**
  * 通过回溯法确定 一个矩阵中是否含有一条包含某字符串全部字符的路径。
  */
 public class PathInMatrix12 {
-    public boolean hasPath(char[][] matrix, String str) {
+    public boolean hasPath(char[] matrix, int rows, int cols, char[] str) {
         if (str == null || matrix == null) {
             return false;
         }
-        boolean[][] visited = new boolean[matrix.length][matrix[0].length];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (helper(matrix, visited, 0, str, i, j)) {
+        char[][] newM = new char[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                newM[i][j] = matrix[i * cols + j];
+            }
+        }
+        boolean[][] visited = new boolean[rows][cols];
+        for (int i = 0; i < newM.length; i++) {
+            for (int j = 0; j < newM[0].length; j++) {
+                if (helper(newM, visited, 0, str, i, j)) {
                     return true;
                 }
             }
@@ -31,27 +35,35 @@ public class PathInMatrix12 {
      * @param str      某字符串
      * @return 是否
      */
-    private boolean helper(char[][] matrix, boolean[][] visited, int strIndex, String str, int x, int y) {
-        if(strIndex == str.length()){
+    private boolean helper(char[][] matrix, boolean[][] visited, int strIndex, char[] str, int x, int y) {
+        if (strIndex == str.length) {
             return true;
         }
         if (x >= matrix.length || y >= matrix[0].length || x < 0 || y < 0 || visited[x][y]) {
             return false;
         }
-        visited[x][y] = true;
-        if(matrix[x][y] != str.charAt(strIndex)){
-            return false;
+        boolean hasPath = false;
+        if (matrix[x][y] == str[strIndex]) {
+            visited[x][y] = true;
+            strIndex++;
+            hasPath = helper(matrix, visited, strIndex, str, x - 1, y)
+                    || helper(matrix, visited, strIndex, str, x + 1, y)
+                    || helper(matrix, visited, strIndex, str, x, y - 1)
+                    || helper(matrix, visited, strIndex, str, x, y + 1);
+            // 此路不通，需要将记录访问置为未访问，不影响下一趟回溯结果
+            if (!hasPath) {
+                strIndex--;
+                visited[x][y] = false;
+            }
         }
-        strIndex++;
 
-        return helper(matrix, visited, strIndex, str, x - 1, y) || helper(matrix, visited, strIndex, str, x + 1, y)
-                || helper(matrix, visited, strIndex, str, x, y - 1) || helper(matrix, visited, strIndex, str, x, y + 1);
+        return hasPath;
     }
 
     @Test
-    public void test(){
-        char[][] matrix = {{'a','b','c'},{'d','e','f'},{'g','h','i'}};
-        boolean res = hasPath(matrix, "acf");
+    public void test() {
+        char[] matrix = "ABCEHJIGSFCSLOPQADEEMNOEADIDEJFMVCEIFGGS".toCharArray();
+        boolean res = hasPath(matrix, 5, 8, "SLHECCEIDEJFGGFIE".toCharArray());
         System.out.println(res);
     }
 }
