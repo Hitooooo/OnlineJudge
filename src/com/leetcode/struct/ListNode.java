@@ -13,4 +13,10 @@ public class ListNode {
     public ListNode(int x) {
         val = x;
     }
+
+    @Override
+    public String toString() {
+        String valStr = val + "";
+        return next == null ? valStr : valStr + "," + next.toString() ;
+    }
 }
