@@ -1,6 +1,5 @@
 package com.offer.sword.quality;
 
-import java.util.Arrays;
 
 import org.junit.Test;
 
