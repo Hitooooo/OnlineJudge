@@ -29,7 +29,9 @@
 
 ### BinarySearch
 
+## Data Struct
 
+### [BinaryTree](doc/BinaryTree.md)
 
 ## Other
 
