@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import com.leetcode.dp.NumArray303;
 import com.leetcode.top100.medium.LRUByDoubleList;
 
 /**
@@ -8,8 +9,9 @@ import com.leetcode.top100.medium.LRUByDoubleList;
 public class Main {
 
     public static void main(String[] args) {
-        int[] arr = {2,3,4,5,4,1};
-        System.out.println(partition(arr, 0, 5));
+        NumArray303 n =  new NumArray303(new int[]{1,2,3,4,5});        
+        int res = n.sumRange(1, 2);
+        System.out.println(res);
     }
 
 
