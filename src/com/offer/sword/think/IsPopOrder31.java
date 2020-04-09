@@ -12,37 +12,23 @@ import java.util.Stack;
  */
 public class IsPopOrder31 {
 
+    /**
+     * 压栈过程中，判断栈顶元素是否和需要判断的弹出队列的首个元素相同。相同则做弹栈处理。
+     */
     public boolean IsPopOrder(int[] pushA, int[] popA) {
         if (pushA == null || popA == null) {
             return false;
         }
-        Stack<Integer> pushStack = new Stack<>();
-        Stack<Integer> popStack = new Stack<>();
-        for (int i = popA.length - 1; i >= 0; i--) {
-            popStack.push(popA[i]);
-        }
-        // 需要压栈下标
-        int i = 0;
-        while (!popStack.isEmpty()) {
-            int next = popStack.peek();
-            // 找到和弹出序列栈顶元素相同的index
-            while (i < pushA.length && pushA[i] != next) {
-                pushStack.push(pushA[i++]);
+        Stack<Integer> stack = new Stack<>();
+        int popIndex = 0;
+        for (int i = 0; i < pushA.length; i++) {
+            stack.push(pushA[i]);
+            while(!stack.isEmpty() && popA[popIndex] == stack.peek()){
+                stack.pop();
+                popIndex++;
             }
-            // 所有元素都已经入栈
-            if (i < pushA.length) {
-                popStack.pop();
-                i++;
-            } else {
-                while (pushStack.isEmpty() && popStack.isEmpty()) {
-                    if (pushStack.pop() != popStack.pop()) {
-                        return false;
-                    }
-                }
-            }
-
         }
-        return popStack.isEmpty();
+        return stack.isEmpty();
     }
 
     @org.junit.Test
