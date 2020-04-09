@@ -1,7 +1,7 @@
 package com.leetcode.struct;
 
 /**
- * Tree Node
+ * Tree Node,并且有指向父亲指针
  *
  * @author HitoM
  * @date 2019/4/1 10:21
