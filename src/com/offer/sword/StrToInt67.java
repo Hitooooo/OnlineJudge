@@ -11,7 +11,11 @@ import org.junit.Test;
 public class StrToInt67 {
 
     public int str2Int(String str) {
-        if (str == null || str.length() < 1) {
+        if (str == null) {
+            return 0;
+        }
+        str = str.trim();
+        if (str.length() < 1) {
             return 0;
         }
         int len = str.length();
@@ -34,28 +38,34 @@ public class StrToInt67 {
         }
         int res = 0;
         int multmin = limit / 10;
+        boolean isOver = false;
         while (i < len) {
             int val = s[i++] - '0';
             if (val > 9 || val < 0) {
-                return 0;
+                break;
             }
             // 溢出。multmin除以10，为了下面的每次乘10做准备
             if (res < multmin) {
-                return 0;
+                isOver = true;
+                break;
             }
             res = res * 10;
-            // 超出范围
-            if(res - val < limit){
-                return 0;
+            // 超出范围 一定不能是 res - val < limit 因为如果溢出了，就一定不满足小于。程序错误!
+            if (res < limit + val) {
+                isOver = true;
+                break;
             }
             res -= val;
+        }
+        if (isOver) {
+            return nagitive ? Integer.MIN_VALUE : Integer.MAX_VALUE;
         }
         return nagitive ? res : -res;
     }
 
     @Test
     public void test() {
-        int res = str2Int("-2147483649");
+        int res = str2Int("42");
         System.out.println(res);
     }
 }
