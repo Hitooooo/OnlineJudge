@@ -1,7 +1,6 @@
-package com.offer.sword.efficiency;
+package com.offer.sword;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 /**
@@ -10,12 +9,10 @@ import org.junit.Test;
 public class StockMaxProfit63 {
 
     /**
-     * 问题用一句话解释，从数组中找到差值最大的一组数。
-     * 一个数记录遍历过元素中最小值，一个数记录遍历过元素中最大差值。
-     * 遍历时更新两个值即可
+     * 问题用一句话解释，从数组中找到差值最大的一组数。 一个数记录遍历过元素中最小值，一个数记录遍历过元素中最大差值。 遍历时更新两个值即可
      */
     public int maxProfit(int[] prices) {
-        if(prices == null || prices.length < 2){
+        if (prices == null || prices.length < 2) {
             return 0;
         }
 
@@ -23,10 +20,10 @@ public class StockMaxProfit63 {
         int maxDiff = 0;
         for (int i = 1; i < prices.length; i++) {
             int currentDiff = prices[i] - minVal;
-            if(currentDiff > maxDiff){
+            if (currentDiff > maxDiff) {
                 maxDiff = currentDiff;
             }
-            if(prices[i] < minVal){
+            if (prices[i] < minVal) {
                 minVal = prices[i];
             }
         }
@@ -34,8 +31,8 @@ public class StockMaxProfit63 {
     }
 
     @Test
-    public void test(){
-        assertEquals(5, maxProfit(new int[]{7,1,5,3,6,4}));
-        assertEquals(0, maxProfit(new int[]{7,6,4,3,1}));
+    public void test() {
+        assertEquals(5, maxProfit(new int[] { 7, 1, 5, 3, 6, 4 }));
+        assertEquals(0, maxProfit(new int[] { 7, 6, 4, 3, 1 }));
     }
 }
