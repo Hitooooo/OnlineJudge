@@ -1,6 +1,5 @@
 package com.offer.sword.algorithm;
 
-import javax.sound.sampled.SourceDataLine;
 
 import org.junit.Test;
 
@@ -16,10 +15,11 @@ public class MinInRotateSortedArr {
 
     /**
      * 直接循环最简单也不会出错，但是时间复杂度是可以小于o(n)的。
-     * 运用二分法模板。
+     * 运用二分法模板。 Wrong
      * @param arr 旋转后的数组
      * @return 最小值
      */
+    @Deprecated
     public int min(int[] arr) {
         if (arr == null || arr.length == 0) {
             throw new RuntimeException("Input param error!");
