@@ -64,6 +64,6 @@ public class Print1ToMaxOfDigits17 {
 
     @Test
     public void test() {
-        printStr(5);
+        printStr(3);
     }
 }
