@@ -1,5 +1,8 @@
 package com.offer.tree.traverse;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Stack;
 
 import com.leetcode.struct.TreeNode;
@@ -16,14 +19,41 @@ public class AfterOrder {
         }
         afterOrderRecursive(root.left);
         afterOrderRecursive(root.right);
-        System.out.print(root.val+"\t");
+        System.out.print(root.val + "\t");
+    }
+
+    /**
+     * 使用模板实现后序遍历
+     */
+    public List<Integer> afterOrderTemplate(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        stack.push(root);
+        while(!stack.isEmpty()){
+            TreeNode node = stack.pop();
+            if (node == null) {
+               res.add(stack.pop().val); 
+            }else{
+                stack.push(node);
+                stack.push(null);
+                if(node.right != null){
+                    stack.push(node.right);
+                }
+                if(node.left != null){
+                    stack.push(node.left);
+                }
+            }
+        }
+        return res;
     }
 
     /**
      * 后序遍历是先访问左、右子树,再访问根节点，而在非递归算法中，利用栈回退到时，并不知道是从左子树回退到根节点，
      * 还是从右子树回退到根节点，如果从左子树回退到根节点，此时就应该去访问右子树，而如果从右子树回退到根节点，
-     * 此时就应该访问根节点。所以相比前序和后序，必须得在压栈时添加信息，以便在退栈时可以知道是从左子树返回，
-     * 还是从右子树返回进而决定下一步的操作。
+     * 此时就应该访问根节点。所以相比前序和后序，必须得在压栈时添加信息，以便在退栈时可以知道是从左子树返回， 还是从右子树返回进而决定下一步的操作。
      */
     public void afterOrder(TreeNode root) {
         if (root == null) {
@@ -44,7 +74,7 @@ public class AfterOrder {
                 node = node.left;
             }
 
-            //  换成if也是可以的，可以减少外层判断次数
+            // 换成if也是可以的，可以减少外层判断次数
             while (!stack.empty() && flagStack.peek() == right) {
                 // 如果是从右子节点返回父节点，则任务完成，将两个栈的栈顶弹出
                 flagStack.pop();
