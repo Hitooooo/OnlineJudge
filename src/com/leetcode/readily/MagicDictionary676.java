@@ -1,96 +1,44 @@
 package com.leetcode.readily;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 
 public class MagicDictionary676 {
 
-    private Node tree;
-    private int correctChange = 1;
-    /** Initialize your data structure here. */
-    public MagicDictionary676() {
-        tree = new Node();
-    }
+    private Map<Integer, java.util.List<String>> buckets;
 
+     /** Initialize your data structure here. */
+     public MagicDictionary676() {
+        buckets = new HashMap<>();
+    }
+    
     /** Build a dictionary through a list of words */
     public void buildDict(String[] dict) {
-        if (dict == null) {
-            return;
-        }
-        for (int i = 0; i < dict.length; i++) {
-            insert(dict[i]);
+        for (String string : dict) {
+            buckets.computeIfAbsent(string.length(), x -> new ArrayList<String>()).add(string);
         }
     }
-
-    /**
-     * Returns if there is any word in the trie that equals to the given word after
-     * modifying exactly one character
-     */
+    
+    /** Returns if there is any word in the trie that equals to the given word after modifying exactly one character */
     public boolean search(String word) {
-        if(word == null || word.length() < 1){
+        int len = word.length();
+        if(!buckets.containsKey(len)){
             return false;
         }
-        Node node = this.tree;
-        char[] caps = word.toCharArray();
-        for (int i = 0; i < caps.length; i++) {
-            if(node.contains(caps[i])){
-                node = node.getNode(caps[i]);
-            }else if(correctChange > 0){
-                node = node.getNode(caps[i]);
-                correctChange--;
-            }else{
-                return false;
+        List<String> caps = buckets.get(len);
+        for (String string : caps) {
+            int mismatch = 0;
+            for (int i = 0; i < word.length(); ++i) {
+                if (word.charAt(i) != string.charAt(i)) {
+                    if (++mismatch > 1) break;
+                }
             }
+            if (mismatch == 1) return true;
         }
-        return node.isEnd == true;
-    }
-
-    /** Inserts a word into the trie. */
-    public void insert(String word) {
-        if (word == null || word.length() < 1) {
-            return;
-        }
-        char[] caps = word.toCharArray();
-        Node node = this.tree;
-        for (int i = 0; i < caps.length; i++) {
-            if (node.contains(caps[i])) {
-                node = node.getNode(caps[i]);
-                continue;
-            } else {
-                node.add(caps[i]);
-                node = node.getNode(caps[i]);
-            }
-        }
-        node.isEnd = true;
-    }
-
-    class Node {
-        Node[] nexts;
-        boolean isEnd;
-
-        public Node() {
-            nexts = new Node[26];
-            isEnd = false;
-        }
-
-        public boolean contains(char c) {
-            return nexts[c - 'a'] != null;
-        }
-
-        public Node getNode(char c) {
-            return nexts[c - 'a'];
-        }
-
-        public void add(char c) {
-            nexts[c - 'a'] = new Node();
-        }
-    }
-
-    @Test
-    public void test(){
-        MagicDictionary676 dictTree =  new MagicDictionary676();
-        dictTree.buildDict(new String[]{"hello","leetcode"});
-        dictTree.search("hello");
-        dictTree.search("hhllo");
-        dictTree.search("hell");
+        return false;
     }
 }
