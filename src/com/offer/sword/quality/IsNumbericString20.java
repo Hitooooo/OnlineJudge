@@ -21,6 +21,6 @@ public class IsNumbericString20 {
 
     @Test
     public void test() {
-        isNumberic("100".toCharArray());
+        isNumberic("1".toCharArray());
     }
 }
